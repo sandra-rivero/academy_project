@@ -84,10 +84,10 @@ class Student:
             print(f"{self.name} is not enrolled in {course}.")  
         
 class Teacher:
-    def __init__(self,name,specialty,age, course, email, phone):
+    def __init__(self,name,specialty,age, email, phone,courses:list=None):
         self.name = name
-        self.edad = age
-        self.course = []
+        self.age = age
+        self.courses = courses or []
         self.email = email
         self.phone = phone
         self.specialty = specialty
@@ -96,10 +96,10 @@ class Teacher:
         return f"{self.name}, {self.specialty}"  
 
 class Course:
-    def __init__(self, dance_style, teacher, student = None, max_students = 10):
+    def __init__(self, dance_style, teachers, students = None, max_students = 10):
         self.dance_style = dance_style
-        self.teacher = teacher
-        self.student = student or []
+        self.teachers = teachers or []
+        self.students = students or []
         self.max_students = max_students
 
     def __str__(self):
@@ -115,12 +115,12 @@ class Course:
         return self.students
     
 class Workshop:
-    def __init__(self, teacher:list, dance_style, date_hour, cost,student:list, max_students = 20):
-        self.teacher = []
+    def __init__(self, teachers:list, dance_style, date_hour, cost,students:list, max_students = 20):
+        self.teachers = teachers or []
         self.dance_style = dance_style
         self.date_hour = date_hour
         self.cost = cost
-        self.student = []
+        self.students = students or []
         self.max_students = max_students
        
     def __repr__(self):
