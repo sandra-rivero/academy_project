@@ -1,9 +1,7 @@
-# Academy Project
+Academy Project
+This project is a management system for a dance academy. It allows the administration of courses, teachers, and students.
 
-Este proyecto es un sistema de gestión para una academia de baile. Permite administrar cursos, profesores y alumnos.
-
-## Características
-
-- Gestión de cursos
-- Registro de profesores
-- Inscripción de alumnos
+Features
+Course management
+Teacher registration
+Student enrollment
