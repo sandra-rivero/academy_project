@@ -1,11 +1,13 @@
-class Academy:
-    DANCE_STYLES = ["salsa","bachata","sevillanas","ballet","hip-hop", "kizomba", "sardana"]
+import datetime
 
-    def __init__(self, name: str, dance_style: list = None):
+class Academy:
+    DANCE_STYLES = ["salsa","bachata","sevillanas","ballet","hip-hop", "kizomba","Pasos libres"]
+
+    def __init__(self, name: str, dance_styles: list = None):
         self.name = name
         self.teachers = []
         self.students = []
-        self.dance_styles = dance_style or []
+        self.dance_styles = dance_styles or []
         self.courses = []
         self.prohibited_dances = ["kizomba"]
         self.workshops = []
@@ -14,19 +16,25 @@ class Academy:
         return (f"Academy [{self.name}]: dance_styles={self.dance_styles}")
     
     def add_dance_style(self, dance_style):
+        #Before adding a dance style, we verify that it is a correct style, then we check whether it has already been added or not
         if dance_style not in self.DANCE_STYLES:
-            raise ValueError("tienen que ser bailes")
-        if not dance_style in self.dance_style:
-            self.estilos_de_baile.append(dance_style)
+            raise ValueError("Must be dance style")
+        if not dance_style in self.dance_styles:
+            self.dance_styles.append(dance_style)
+        else:
+            raise ValueError(f"{dance_style} already exist")    
 
     def show_dance_styles(self):
-        return self.dance_style  
+        return self.dance_styles
 
     def change_name(self, new_name):
         self.name = new_name
 
     def add_course(self, course):
-        self.courses.append(course)
+        if course not in self.courses:
+            self.courses.append(course)
+        else:
+            raise ValueError(f"{course} already exist")    
 
     def show_courses(self):
         return self.courses
@@ -36,7 +44,14 @@ class Academy:
             self.workshops.append(new_workshop)
             print("Workshop added.")
         else:
-            print(f"{new_workshop} already exists.")    
+            raise ValueError(f"{new_workshop} already exists.")  
+
+    def add_student(self,student):
+        if student not in self.students:
+            self.students.append(student)
+            return True
+        else:
+            raise ValueError(f"{student} already exist")     
         
 
 class DanceStyle:
@@ -52,36 +67,36 @@ class DanceStyle:
         if style not in self.DANCE_STYLES:
             self.dance_style.append(style)
         else:
-            print(f"The dance style {style} is already added.")
+            raise ValueError(f"The dance style {style} is already added.")
 
     def show_dance_styles(self):
-        print(self.DANCE_STYLES)              
+        return self.dance_styles              
 
 class Student:
-    def __init__(self, name, age, course, email, phone):
+    def __init__(self, name, age, courses, email, phone):
          self.name = name
          self.age = age
-         self.course = []
+         self.courses = []
          self.email = email
          self.phone = phone
 
     def __str__ (self):
-        return f"{self.name}, {self.age}"     
+        return f"{self.name}"     
 
     def change_name(self, new_name):
         self.name = new_name
 
     def enroll_in_course(self, course):
-        if course not in self.course:
-            self.course.append(course)
+        if course not in self.courses:
+            self.courses.append(course)
         else:
-            print(f"{self.name} is already enrolled in {course}.")
+            raise ValueError(f"{self.name} is already enrolled in {course}.")
 
     def drop_course(self, course):
-        if course in self.course:
-            self.course.remove(course)
+        if course in self.courses:
+            self.courses.remove(course)
         else:
-            print(f"{self.name} is not enrolled in {course}.")  
+            raise ValueError(f"{self.name} is not enrolled in {course}.")  
         
 class Teacher:
     def __init__(self,name,specialty,age, email, phone,courses:list=None):
@@ -105,11 +120,11 @@ class Course:
     def __str__(self):
         return f"{self.dance_style}, {self.teacher}"  
 
-    def add_student(self, student):
+    def add_student(self, new_student):
         if len(self.students) < self.max_students:
-            self.students.append(student)
+            self.students.append(new_student)
         else:
-            print("Class is full, you cannot add more students")  
+            raise ValueError("Class is full, you cannot add more students")  
    
     def show_students(self):
         return self.students
@@ -130,7 +145,7 @@ class Workshop:
         if len(self.students) < self.max_students:
             self.students.append(student)
         else:
-            print("Class is full, you cannot add more students")  
+            raise ValueError("Class is full, you cannot add more students")
 
     def show_students(self):
         return self.students           
