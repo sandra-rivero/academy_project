@@ -29,6 +29,7 @@ academy.change_name("Infinit")
 print(academy.name)
 
 #Test to add a course and show them
+
 academy.add_course("Bachata inicio 1")
 
 academy.add_course("Bachata medio 1")
@@ -38,8 +39,13 @@ academy.add_course("Bachata medio 2")
 print(academy.courses)
 
 #Test to add a student, and show them
+
 academy.add_student("Pepe")
+
 academy.add_student("Maria")
+
 academy.add_student("Noelia")
+
 academy.add_student("Luis")
+
 print(academy.students)
