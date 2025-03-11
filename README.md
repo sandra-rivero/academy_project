@@ -11,6 +11,7 @@ Student Enrollment: Register students and manage their course enrollments.
 Usage Examples
 
 #Test to add a dance style to our academy and show them
+
 academy = Academy("Victorys")
 
 academy.add_dance_style("Pasos libres")
@@ -24,6 +25,7 @@ academy.add_dance_style("sevillanas")
 print(academy.dance_styles)
 
 #Test to change the name of the academy and show them
+
 academy.change_name("Infinit")
 
 print(academy.name)
