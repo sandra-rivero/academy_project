@@ -51,3 +51,7 @@ academy.add_student("Noelia")
 academy.add_student("Luis")
 
 print(academy.students)
+
+#Test to see if the prohibited dance can be added or not
+
+academy.add_dance_style("kizomba")
